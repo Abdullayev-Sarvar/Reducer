@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import ProjectStore from '../../context/store';
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [state, dispatch] = useContext(ProjectStore);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,7 +26,13 @@ const Register = () => {
             position: "right", 
             backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
         }).showToast();
+
+        if(window.confirm("Do you go to Home Page?")){
+            navigate("/")
+        }
     };
+
+
 
     return (
         <div className="flex flex-col items-center my-28">
